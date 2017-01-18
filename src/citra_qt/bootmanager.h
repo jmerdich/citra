@@ -119,6 +119,7 @@ public:
     qreal windowPixelRatio();
 
     void closeEvent(QCloseEvent* event) override;
+    void focusOutEvent(QFocusEvent* event) override;
 
     void keyPressEvent(QKeyEvent* event) override;
     void keyReleaseEvent(QKeyEvent* event) override;

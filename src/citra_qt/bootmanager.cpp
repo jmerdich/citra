@@ -196,11 +196,21 @@ void GRenderWindow::closeEvent(QCloseEvent* event) {
     QWidget::closeEvent(event);
 }
 
+void GRenderWindow::focusOutEvent(QFocusEvent* event) {
+    KeyMap::ReleaseAllKeys(*this);
+}
+
 void GRenderWindow::keyPressEvent(QKeyEvent* event) {
+    if (event->isAutoRepeat()) {
+        return;
+    }
     KeyMap::PressKey(*this, {event->key(), keyboard_id});
 }
 
 void GRenderWindow::keyReleaseEvent(QKeyEvent* event) {
+    if (event->isAutoRepeat()) {
+        return;
+    }
     KeyMap::ReleaseKey(*this, {event->key(), keyboard_id});
 }
 

@@ -149,4 +149,11 @@ void ReleaseKey(EmuWindow& emu_window, HostDeviceKey key) {
         }
     }
 }
+
+void ReleaseAllKeys(EmuWindow& emu_window) {
+    auto iter = key_map.begin();
+    while (iter != key_map.end()) {
+        ReleaseKey(emu_window, (iter++)->first);
+    }
+}
 }
