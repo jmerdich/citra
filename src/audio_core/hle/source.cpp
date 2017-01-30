@@ -325,9 +325,9 @@ bool Source::DequeueBuffer() {
     }
 
     // the first playthrough starts at play_position, loops start at the beginning of the buffer
-    state.current_buffer_id = buf.buffer_id;
     state.current_sample_number = (!buf.has_played) ? buf.play_position : 0;
     state.next_sample_number = state.current_sample_number;
+    state.current_buffer_id = buf.buffer_id;
     state.buffer_update = buf.from_queue && !buf.has_played;
 
     buf.has_played = true;
