@@ -72,7 +72,7 @@ void GameList::ValidateEntry(const QModelIndex& item) {
 void GameList::DonePopulating() {
     // Resort all the games.
     tree_view->sortByColumn(tree_view->header()->sortIndicatorSection(),
-        tree_view->header()->sortIndicatorOrder());
+                            tree_view->header()->sortIndicatorOrder());
     tree_view->setSortingEnabled(true);
 
     tree_view->setEnabled(true);
