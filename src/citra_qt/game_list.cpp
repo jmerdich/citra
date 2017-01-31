@@ -70,6 +70,11 @@ void GameList::ValidateEntry(const QModelIndex& item) {
 }
 
 void GameList::DonePopulating() {
+    // Resort all the games.
+    tree_view->sortByColumn(tree_view->header()->sortIndicatorSection(),
+        tree_view->header()->sortIndicatorOrder());
+    tree_view->setSortingEnabled(true);
+
     tree_view->setEnabled(true);
 }
 
@@ -98,6 +103,8 @@ void GameList::PopulateAsync(const QString& dir_path, bool deep_scan) {
     }
 
     tree_view->setEnabled(false);
+    // Don't sort items until the end.
+    tree_view->setSortingEnabled(false);
     // Delete any rows that might already exist if we're repopulating
     item_model->removeRows(0, item_model->rowCount());
 
