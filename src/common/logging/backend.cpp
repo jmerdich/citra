@@ -117,6 +117,7 @@ Entry CreateEntry(Class log_class, Level log_level, const char* filename, unsign
     std::array<char, 4 * 1024> formatting_buffer;
 
     Entry entry;
+    entry.count = 0;
     entry.timestamp = duration_cast<std::chrono::microseconds>(steady_clock::now() - time_origin);
     entry.log_class = log_class;
     entry.log_level = log_level;
@@ -147,6 +148,12 @@ void LogMessage(Class log_class, Level log_level, const char* filename, unsigned
     Entry entry = CreateEntry(log_class, log_level, filename, line_nr, function, format, args);
     va_end(args);
 
+    static Entry last_entry{};
+    if (entry == last_entry) {
+        entry.count = last_entry.count + 1;
+    }
+
     PrintColoredMessage(entry);
+    last_entry = std::move(entry);
 }
 }

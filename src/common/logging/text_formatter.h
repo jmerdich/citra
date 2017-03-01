@@ -25,7 +25,7 @@ const char* TrimSourcePath(const char* path, const char* root = "src");
 /// Formats a log entry into the provided text buffer.
 void FormatLogMessage(const Entry& entry, char* out_text, size_t text_len);
 /// Formats and prints a log entry to stderr.
-void PrintMessage(const Entry& entry);
+size_t PrintMessage(const Entry& entry);
 /// Prints the same message as `PrintMessage`, but colored acoording to the severity level.
 void PrintColoredMessage(const Entry& entry);
 }

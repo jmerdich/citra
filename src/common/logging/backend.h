@@ -24,12 +24,18 @@ struct Entry {
     Level log_level;
     std::string location;
     std::string message;
+    size_t count;
 
     Entry() = default;
     Entry(Entry&& o) = default;
 
     Entry& operator=(Entry&& o) = default;
 };
+
+inline bool operator==(const Entry& lhs, const Entry& rhs) {
+    return (lhs.log_class == rhs.log_class) && (lhs.log_level == rhs.log_level) &&
+           (lhs.location == rhs.location) && (lhs.message == rhs.message);
+}
 
 /**
  * Returns the name of the passed log class as a C-string. Subclasses are separated by periods
