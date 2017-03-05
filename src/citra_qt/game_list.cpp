@@ -73,6 +73,8 @@ void GameList::ValidateEntry(const QModelIndex& item) {
 }
 
 void GameList::DonePopulating() {
+    auto header = tree_view->header();
+    item_model->sort(header->sortIndicatorSection(), header->sortIndicatorOrder());
     tree_view->setEnabled(true);
 }
 
