@@ -101,7 +101,7 @@ void ConfigureGraphics::setConfiguration() {
     ui->swap_screen->setChecked(Settings::values.swap_screen);
 }
 
-void ConfigureGraphics::applyConfiguration() {
+void ConfigureGraphics::applyConfiguration(bool commit_settings_file) {
     Settings::values.use_hw_renderer = ui->toggle_hw_renderer->isChecked();
     Settings::values.use_shader_jit = ui->toggle_shader_jit->isChecked();
     Settings::values.resolution_factor =
@@ -111,5 +111,7 @@ void ConfigureGraphics::applyConfiguration() {
     Settings::values.layout_option =
         static_cast<Settings::LayoutOption>(ui->layout_combobox->currentIndex());
     Settings::values.swap_screen = ui->swap_screen->isChecked();
-    Settings::Apply();
+    if (commit_settings_file) {
+        Settings::Apply();
+    }
 }

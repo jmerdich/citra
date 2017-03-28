@@ -53,7 +53,7 @@ void ConfigureAudio::setConfiguration() {
     ui->audio_device_combo_box->setCurrentIndex(new_device_index);
 }
 
-void ConfigureAudio::applyConfiguration() {
+void ConfigureAudio::applyConfiguration(bool commit_settings_file) {
     Settings::values.sink_id =
         ui->output_sink_combo_box->itemText(ui->output_sink_combo_box->currentIndex())
             .toStdString();
@@ -61,7 +61,9 @@ void ConfigureAudio::applyConfiguration() {
     Settings::values.audio_device_id =
         ui->audio_device_combo_box->itemText(ui->audio_device_combo_box->currentIndex())
             .toStdString();
-    Settings::Apply();
+    if (commit_settings_file) {
+        Settings::Apply();
+    }
 }
 
 void ConfigureAudio::updateAudioDevices(int sink_index) {

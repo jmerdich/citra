@@ -17,11 +17,15 @@ ConfigureDialog::~ConfigureDialog() {}
 void ConfigureDialog::setConfiguration() {}
 
 void ConfigureDialog::applyConfiguration() {
-    ui->generalTab->applyConfiguration();
-    ui->systemTab->applyConfiguration();
-    ui->inputTab->applyConfiguration();
-    ui->graphicsTab->applyConfiguration();
-    ui->audioTab->applyConfiguration();
-    ui->debugTab->applyConfiguration();
+    // apply each, but don't commit the ini file (and trigger
+    //  associated changes) until the end
+    ui->generalTab->applyConfiguration(false);
+    ui->inputTab->applyConfiguration(false);
+    ui->graphicsTab->applyConfiguration(false);
+    ui->audioTab->applyConfiguration(false);
+    ui->debugTab->applyConfiguration(false);
+
     Settings::Apply();
+    // system settings doesn't actually put settings in the ini file
+    ui->systemTab->applyConfiguration();
 }

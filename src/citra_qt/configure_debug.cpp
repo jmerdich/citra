@@ -19,8 +19,10 @@ void ConfigureDebug::setConfiguration() {
     ui->gdbport_spinbox->setValue(Settings::values.gdbstub_port);
 }
 
-void ConfigureDebug::applyConfiguration() {
+void ConfigureDebug::applyConfiguration(bool commit_settings_file) {
     Settings::values.use_gdbstub = ui->toggle_gdbstub->isChecked();
     Settings::values.gdbstub_port = ui->gdbport_spinbox->value();
-    Settings::Apply();
+    if (commit_settings_file) {
+        Settings::Apply();
+    }
 }

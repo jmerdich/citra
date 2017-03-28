@@ -18,7 +18,7 @@ public:
     explicit ConfigureGraphics(QWidget* parent = nullptr);
     ~ConfigureGraphics();
 
-    void applyConfiguration();
+    void applyConfiguration(bool commit = true);
 
 private:
     void setConfiguration();

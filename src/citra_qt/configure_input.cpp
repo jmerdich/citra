@@ -112,13 +112,15 @@ ConfigureInput::ConfigureInput(QWidget* parent)
     ui->buttonCStickRight->setEnabled(false);
 }
 
-void ConfigureInput::applyConfiguration() {
+void ConfigureInput::applyConfiguration(bool commit_settings_file) {
     std::transform(buttons_param.begin(), buttons_param.end(), Settings::values.buttons.begin(),
                    [](const Common::ParamPackage& param) { return param.Serialize(); });
     std::transform(analogs_param.begin(), analogs_param.end(), Settings::values.analogs.begin(),
                    [](const Common::ParamPackage& param) { return param.Serialize(); });
 
-    Settings::Apply();
+    if (commit_settings_file) {
+        Settings::Apply();
+    }
 }
 
 void ConfigureInput::loadConfiguration() {

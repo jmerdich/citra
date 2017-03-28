@@ -18,7 +18,7 @@ public:
     explicit ConfigureAudio(QWidget* parent = nullptr);
     ~ConfigureAudio();
 
-    void applyConfiguration();
+    void applyConfiguration(bool commit_settings_file = true);
 
 public slots:
     void updateAudioDevices(int sink_index);

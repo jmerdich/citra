@@ -18,7 +18,7 @@ public:
     explicit ConfigureDebug(QWidget* parent = nullptr);
     ~ConfigureDebug();
 
-    void applyConfiguration();
+    void applyConfiguration(bool commit_settings_file = true);
 
 private:
     void setConfiguration();

@@ -28,10 +28,12 @@ void ConfigureGeneral::setConfiguration() {
     ui->region_combobox->setCurrentIndex(Settings::values.region_value + 1);
 }
 
-void ConfigureGeneral::applyConfiguration() {
+void ConfigureGeneral::applyConfiguration(bool commit_settings_file) {
     UISettings::values.gamedir_deepscan = ui->toggle_deepscan->isChecked();
     UISettings::values.confirm_before_closing = ui->toggle_check_exit->isChecked();
     Settings::values.region_value = ui->region_combobox->currentIndex() - 1;
     Settings::values.use_cpu_jit = ui->toggle_cpu_jit->isChecked();
-    Settings::Apply();
+    if (commit_settings_file) {
+        Settings::Apply();
+    }
 }

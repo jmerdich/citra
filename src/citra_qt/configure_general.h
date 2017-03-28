@@ -18,7 +18,7 @@ public:
     explicit ConfigureGeneral(QWidget* parent = nullptr);
     ~ConfigureGeneral();
 
-    void applyConfiguration();
+    void applyConfiguration(bool commit_settings_file = true);
 
 private:
     void setConfiguration();

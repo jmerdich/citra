@@ -30,7 +30,7 @@ public:
     explicit ConfigureInput(QWidget* parent = nullptr);
 
     /// Save all button configurations to settings file
-    void applyConfiguration();
+    void applyConfiguration(bool commit_settings_file = true);
 
 private:
     std::unique_ptr<Ui::ConfigureInput> ui;
