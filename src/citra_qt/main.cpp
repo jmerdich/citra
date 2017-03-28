@@ -73,8 +73,6 @@ GMainWindow::GMainWindow() : config(new Config()), emu_thread(nullptr) {
                        .arg(Common::g_build_name, Common::g_scm_branch, Common::g_scm_desc));
     show();
 
-    game_list->PopulateAsync(UISettings::values.gamedir, UISettings::values.gamedir_deepscan);
-
     QStringList args = QApplication::arguments();
     if (args.length() >= 2) {
         BootGame(args[1]);
@@ -538,7 +536,7 @@ void GMainWindow::OnMenuSelectGameListRoot() {
     QString dir_path = QFileDialog::getExistingDirectory(this, tr("Select Directory"));
     if (!dir_path.isEmpty()) {
         UISettings::values.gamedir = dir_path;
-        game_list->PopulateAsync(dir_path, UISettings::values.gamedir_deepscan);
+        game_list->OnSettingsUpdated();
     }
 }
 
@@ -612,6 +610,7 @@ void GMainWindow::OnConfigure() {
     auto result = configureDialog.exec();
     if (result == QDialog::Accepted) {
         configureDialog.applyConfiguration();
+        game_list->OnSettingsUpdated();
         config->Save();
     }
 }

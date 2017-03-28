@@ -33,6 +33,7 @@ public:
 
     void SaveInterfaceLayout();
     void LoadInterfaceLayout();
+    void OnSettingsUpdated();
 
     static const QStringList supported_file_extensions;
 
@@ -54,4 +55,6 @@ private:
     QStandardItemModel* item_model = nullptr;
     GameListWorker* current_worker = nullptr;
     QFileSystemWatcher watcher;
+    QString game_directory;
+    bool recursive;
 };
