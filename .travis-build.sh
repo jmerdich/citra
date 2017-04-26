@@ -44,8 +44,10 @@ fi
 
 #if OS is linux or is not set
 if [ "$TRAVIS_OS_NAME" = "linux" -o -z "$TRAVIS_OS_NAME" ]; then
-    export CC=gcc-${CC_VER}
-    export CXX=g++-${CC_VER}
+    if [ -z "$CC_VER" ] ; then
+        export CC=gcc-${CC_VER}
+        export CXX=g++-${CC_VER}
+    fi
     export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
 
     mkdir build && cd build
