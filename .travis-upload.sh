@@ -4,7 +4,7 @@ if [ "$TRAVIS_EVENT_TYPE" = "push" ]&&[ "$TRAVIS_BRANCH" = "master" ]; then
     mkdir -p artifacts
 
     if [ "$TRAVIS_OS_NAME" = "linux" -o -z "$TRAVIS_OS_NAME" ]; then
-        REV_NAME="citra-linux-${GITDATE}-${GITREV}"
+        REV_NAME="citra-linux-gcc${CC_VER}-${GITDATE}-${GITREV}"
         ARCHIVE_NAME="${REV_NAME}.tar.xz"
         COMPRESSION_FLAGS="-cJvf"
         mkdir "$REV_NAME"
