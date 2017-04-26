@@ -4,7 +4,7 @@ matrix:
     - os: linux
       sudo: required
       dist: trusty
-      env: CC_VER=4.8
+      env: CC_VER=4.9
     - os: linux
       sudo: required
       dist: trusty
@@ -20,6 +20,8 @@ addons:
     packages:
       - gcc-6
       - g++-6
+      - gcc-4.9
+      - g++-4.9
       - qt5-default
       - libqt5opengl5-dev
       - xorg-dev
