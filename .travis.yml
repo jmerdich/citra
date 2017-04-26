@@ -4,11 +4,15 @@ matrix:
     - os: linux
       sudo: required
       dist: trusty
-      env: CC_VER=4.9
+      env:
+          - CC=gcc-4.9
+          - CXX=g++-4.9
     - os: linux
       sudo: required
       dist: trusty
-      env: CC_VER=6
+      env:
+          - CC=gcc-6
+          - CXX=g++-6
     - os: osx
       sudo: false
       osx_image: xcode7.3

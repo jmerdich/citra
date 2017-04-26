@@ -5,10 +5,6 @@ set -x
 
 #if OS is linux or is not set
 if [ "$TRAVIS_OS_NAME" = "linux" -o -z "$TRAVIS_OS_NAME" ]; then
-    if [ -z "$CC_VER" ] ; then
-        export CC=gcc-${CC_VER}
-        export CXX=g++-${CC_VER}
-    fi
     mkdir -p $HOME/.local
 
     if [ ! -e $HOME/.local/bin/cmake ]; then
