@@ -47,7 +47,7 @@ if [ "$TRAVIS_OS_NAME" = "linux" -o -z "$TRAVIS_OS_NAME" ]; then
     export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH
 
     mkdir build && cd build
-    cmake ..
+    cmake .. -DCMAKE_CXX_COMPILER="${CXX}" -DCMAKE_CC_COMPILER="${CC}"
     make -j4
 
     ctest -VV -C Release
